@@ -1,3 +1,4 @@
+const { json } = require('express')
 const Car = require('../models/Car')
 
 
@@ -10,8 +11,16 @@ class carController {
             const car = new Car({
                 engine, mark, model
             })
-            if(req.file){
-                car.photo=req.file.path
+
+            if (req.files.carouselPhotos) {
+                let path = ''
+                req.files.carouselPhotos.forEach((file) => {
+                    car.carouselPhotos.push(file.path)
+                })
+              
+            }
+            if (req.files.photo) {
+                car.photo = req.files.photo[0].path
             }
             car.save()
             return res.json(car)
@@ -19,6 +28,7 @@ class carController {
             console.log(e)
             res.status(400).json({ message: 'Car create error' })
         }
+
     }
     async getAll(req, res) {
         try {

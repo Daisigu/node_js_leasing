@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 app.use('/uploads', express.static('uploads'))
 app.use("/auth", authRouter)
 app.use("/cars", carRouter)
-
+app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 const start = async () => {
     try {
