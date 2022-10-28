@@ -36,6 +36,15 @@ class carController {
             console.log(e);
         }
     }
+    async getCar(req,res){
+       const {id} = req.params
+        try {
+            const car = await Car.findById(id)
+            return res.json(car)
+        } catch (e){
+
+        }
+    }
 
 }
 

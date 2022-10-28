@@ -8,5 +8,6 @@ router.post('/create', upload.fields([{
     name: 'photo', maxCount: 1
 }]), carController.create)
 router.get('/getAll', carController.getAll)
+router.get('/car/:id', carController.getCar)
 
 module.exports = router
