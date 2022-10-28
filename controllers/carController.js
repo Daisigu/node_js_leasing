@@ -10,19 +10,22 @@ class carController {
             const car = new Car({
                 engine, mark, model
             })
+            if(req.file){
+                car.photo=req.file.path
+            }
             car.save()
-            return res.json( car )
+            return res.json(car)
         } catch (e) {
             console.log(e)
             res.status(400).json({ message: 'Car create error' })
         }
     }
-    async getAll(req,res){
-        try{
+    async getAll(req, res) {
+        try {
             const cars = await Car.find()
             return res.json(cars)
-        } catch (e){
-
+        } catch (e) {
+            console.log(e);
         }
     }
 
