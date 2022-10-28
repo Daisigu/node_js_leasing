@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const authRouter = require('./routers/authRouter')
+const carRouter = require('./routers/carRouter')
 const PORT = process.env.PORT || 5000
 const cors = require('cors')
 const app = express()
@@ -16,6 +17,8 @@ app.use((req, res, next) => {
     next();
   });
 app.use("/auth", authRouter)
+app.use("/cars", carRouter)
+
 app.use(cors())
 const start = async () => {
     try {
