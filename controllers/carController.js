@@ -7,17 +7,15 @@ class carController {
 
     async create(req, res) {
         try {
-            const { engine, mark, model } = req.body
+            const { engine, mark, model, price, mileage, availability } = req.body
             const car = new Car({
-                engine, mark, model
+                engine, mark, model, price, mileage, availability
             })
 
             if (req.files.carouselPhotos) {
-                let path = ''
                 req.files.carouselPhotos.forEach((file) => {
                     car.carouselPhotos.push(file.path)
                 })
-              
             }
             if (req.files.photo) {
                 car.photo = req.files.photo[0].path
