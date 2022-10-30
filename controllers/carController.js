@@ -7,9 +7,9 @@ class carController {
 
     async create(req, res) {
         try {
-            const { engine, mark, model, price, mileage, availability } = req.body
+            const { engine, mark, model, price, mileage ,year, availability,transmission ,body ,color} = req.body
             const car = new Car({
-                engine, mark, model, price, mileage, availability
+                engine, mark, model, price, mileage, year,availability ,transmission ,body ,color
             })
 
             if (req.files.carouselPhotos) {

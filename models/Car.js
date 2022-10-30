@@ -7,6 +7,10 @@ const Car = new Schema({
     price: {type: String, required: true},
     mileage: {type: String, required: true},
     availability: {type: String, required: true},
+    year: {type: String, required: true},
+    transmission: {type: String, required: true},
+    body: {type: String, required: true},
+    color: {type: String, required: true},
     model: {type: String, required: true},
     photo: {type: String, required: true},
     carouselPhotos: {type: Array, required: true}
