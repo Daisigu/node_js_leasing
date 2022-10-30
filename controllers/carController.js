@@ -28,6 +28,39 @@ class carController {
         }
 
     }
+    async updateCar(req, res) {
+        try {
+          const car = req.body
+          car.carouselPhotos=[]
+          car.photo=''
+          if(!car._id){
+            res.status(400).json({message: 'id не указан'})
+          }
+          if (req.files.carouselPhotos) {
+            req.files.carouselPhotos.forEach((file) => {
+                car.carouselPhotos.push(file.path)
+            })
+        }
+        if (req.files.photo) {
+            car.photo = req.files.photo[0].path
+        }
+          const updatedCar = await Car.findByIdAndUpdate(car._id, car, {new: true})
+      
+        } catch (e) {
+            console.log(e)
+            res.status(400).json({ message: 'Car create error' })
+        }
+
+    }
+    async deleteCar(req,res){
+        const {id} = req.params
+        try {
+            const car = await Car.findByIdAndDelete(id)
+            return res.json(car)
+        } catch (e){
+            console.log(e);
+        }
+    }
     async getAll(req, res) {
         try {
             const cars = await Car.find()

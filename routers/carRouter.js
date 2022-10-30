@@ -9,5 +9,13 @@ router.post('/create', upload.fields([{
 }]), carController.create)
 router.get('/getAll', carController.getAll)
 router.get('/car/:id', carController.getCar)
+router.post('/delete/:id', carController.deleteCar)
+
+router.post('/update', upload.fields([{
+    name: 'carouselPhotos', maxCount: 5
+}, {
+    name: 'photo', maxCount: 1
+}]), carController.updateCar)
+
 
 module.exports = router
