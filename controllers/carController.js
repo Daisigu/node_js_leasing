@@ -78,6 +78,17 @@ class carController {
 
         }
     }
+    async filters(req,res){
+        const cars = await Car.find()
+        let filters = {}
+        let mark =new Set(cars.map(i=>i.mark))
+        mark = [...mark]
+        filters.mark=mark
+        let model =new Set(cars.map(i=>i.model))
+        model = [...model]
+        filters.model=model
+        return res.json(filters)
+    }
 
 }
 
