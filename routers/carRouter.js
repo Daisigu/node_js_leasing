@@ -17,6 +17,8 @@ router.post(
   carController.create
 );
 router.get("/getAll", carController.getAll);
+router.post("/getLimit", carController.getLimit);
+
 router.get("/car/:id", carController.getCar);
 router.post("/delete/:id", carController.deleteCar);
 router.get("/filters", carController.filters)
