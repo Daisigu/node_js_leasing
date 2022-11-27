@@ -18,10 +18,10 @@ router.post(
 );
 router.get("/getAll", carController.getAll);
 router.post("/getLimit", carController.getLimit);
-
+router.post("/filterCars", carController.filterCars);
 router.get("/car/:id", carController.getCar);
 router.post("/delete/:id", carController.deleteCar);
-router.get("/filters", carController.filters)
+router.get("/filters", carController.filters);
 router.post(
   "/update",
   upload.fields([
