@@ -86,13 +86,13 @@ class carController {
     }
   }
   async getLimit(req, res) {
-    const { page, limit} = req.body;
+    const { page, limit } = req.body;
     try {
       const cars = await Car.find()
-      .skip(limit * page)
-      .limit(limit);
+        .skip(limit * page)
+        .limit(limit);
       const carsCount = await Car.find();
-      return res.json({cars: cars, limit: carsCount.length})
+      return res.json({ cars: cars, limit: carsCount.length });
     } catch (e) {
       console.log(e);
     }
